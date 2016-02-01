@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Compact","A compressed representation of the accumulation of `(key, val, wgt)` triples."],["CompactSession",""]]});

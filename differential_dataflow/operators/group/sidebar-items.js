@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["Group","Extension trait for the `group` differential dataflow method"],["GroupBy","Extension trait for the `group_by` and `group_by_u` differential dataflow methods."],["GroupByCore",""],["GroupUnsigned",""]]});

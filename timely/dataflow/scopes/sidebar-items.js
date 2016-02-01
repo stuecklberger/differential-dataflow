@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["child",""],["root",""]],"trait":[["Scope","The fundamental operations required to add and connect operators in a timely dataflow graph."]]});

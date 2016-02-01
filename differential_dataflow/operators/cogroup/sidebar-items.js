@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["CoGroupBy","Extension trait for the `group_by` and `group_by_u` differential dataflow methods."]]});

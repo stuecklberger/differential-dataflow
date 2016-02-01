@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["compact","Accumulator of `(key, val, wgt)` triples based on sorting and run-length encoding."],["count","Like `Count` but with the value type specialized to `()`."],["least_upper_bound",""],["lookup",""],["robin_hood",""],["tier","A trie representation of `(key, time, value, weight)` tuples, and routines to merge them."],["trace",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Merge","A merge-in-progress of two instances of `Tier<K, T, V>`."],["Tier","A collection of `(K, T, V, W)` tuples, grouped by `K` then `T` then `V`."]],"type":[["W","Changes to frequencies."]]});

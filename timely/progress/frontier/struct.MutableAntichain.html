@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `MutableAntichain` struct in crate `timely`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, MutableAntichain">
+
+    <title>timely::progress::frontier::MutableAntichain - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>timely</a>::<wbr><a href='../index.html'>progress</a>::<wbr><a href='index.html'>frontier</a></p><script>window.sidebarCurrent = {name: 'MutableAntichain', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>timely</a>::<wbr><a href='../index.html'>progress</a>::<wbr><a href='index.html'>frontier</a>::<wbr><a class='struct' href=''>MutableAntichain</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-116' class='srclink' href='../../../src/timely/progress/frontier.rs.html#56-60' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct MutableAntichain&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>An antichain based on a multiset whose elements frequencies can be updated.</p>
+
+<p>In particular, unlike <code>Antichain</code>, element frequencies can be decremented, removing elements in
+the antichain and revealing other elements that were previously obscured.
+As part of this, the <code>MutableAntichain</code> must maintain the frequences for all elements, not just
+those in the antichain at the moment.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html' title='core::cmp::PartialOrd'>PartialOrd</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + 'static&gt; <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h4>
+<div class='docblock'><p>Creates a new empty <code>MutableAntichain</code>.</p>
+</div><h4 id='method.clear' class='method'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></h4>
+<h4 id='method.elements' class='method'><code>fn <a href='#method.elements' class='fnname'>elements</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>T<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+<div class='docblock'><p>Reveals the element in the <code>MutableAntichain</code>.</p>
+</div><h4 id='method.new_bottom' class='method'><code>fn <a href='#method.new_bottom' class='fnname'>new_bottom</a>(bottom: T) -&gt; <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h4>
+<div class='docblock'><p>Creates a new singleton <code>MutableAntichain</code>.</p>
+</div><h4 id='method.empty' class='method'><code>fn <a href='#method.empty' class='fnname'>empty</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Returns true if there are no elements in the <code>MutableAntichain</code>.</p>
+</div><h4 id='method.lt' class='method'><code>fn <a href='#method.lt' class='fnname'>lt</a>(&amp;self, time: &amp;T) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Returns true if any item in the <code>MutableAntichain</code> is strictly less than the argument.</p>
+</div><h4 id='method.le' class='method'><code>fn <a href='#method.le' class='fnname'>le</a>(&amp;self, time: &amp;T) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Returns true if any item in the <code>MutableAntichain</code> is less than or equal to the argument.</p>
+</div><h4 id='method.count' class='method'><code>fn <a href='#method.count' class='fnname'>count</a>(&amp;self, time: &amp;T) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>&gt;</code></h4>
+<div class='docblock'><p>Returns the number of times an element exists in the set.</p>
+</div><h4 id='method.update_into_cm' class='method'><code>fn <a href='#method.update_into_cm' class='fnname'>update_into_cm</a>(&amp;mut self, updates: &amp;<a class='struct' href='../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;T&gt;, results: &amp;mut <a class='struct' href='../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;T&gt;)</code></h4>
+<h4 id='method.update_weight' class='method'><code>fn <a href='#method.update_weight' class='fnname'>update_weight</a>(&amp;mut self, elem: &amp;T, delta: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>, results: &amp;mut <a class='struct' href='../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;T&gt;)</code></h4>
+<h4 id='method.update' class='method'><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;mut self, elem: &amp;T, delta: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>)</code></h4>
+<h4 id='method.update_iter_and' class='method'><code>fn <a href='#method.update_iter_and' class='fnname'>update_iter_and</a>&lt;I: <a class='trait' href='https://doc.rust-lang.org/nightly/core/iter/trait.Iterator.html' title='core::iter::Iterator'>Iterator</a>&lt;Item=<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(T, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>)</a>&gt;, A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(&amp;T, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;(&amp;mut self, updates: I, action: A)</code></h4>
+<h4 id='method.test_size' class='method'><code>fn <a href='#method.test_size' class='fnname'>test_size</a>(&amp;self, threshold: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>)</code></h4>
+<h4 id='method.update_and' class='method'><code>fn <a href='#method.update_and' class='fnname'>update_and</a>&lt;A: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html' title='core::ops::FnMut'>FnMut</a>(&amp;T, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;(&amp;mut self, elem: &amp;T, delta: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>, action: A)</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a> for <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='method.default' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#method.default' class='fnname'>default</a>() -&gt; <a class='struct' href='../../../timely/progress/frontier/struct.MutableAntichain.html' title='timely::progress::frontier::MutableAntichain'>MutableAntichain</a>&lt;T&gt;</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "timely";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

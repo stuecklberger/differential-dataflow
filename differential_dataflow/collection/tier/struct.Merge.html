@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Merge` struct in crate `differential_dataflow`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Merge">
+
+    <title>differential_dataflow::collection::tier::Merge - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>differential_dataflow</a>::<wbr><a href='../index.html'>collection</a>::<wbr><a href='index.html'>tier</a></p><script>window.sidebarCurrent = {name: 'Merge', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>differential_dataflow</a>::<wbr><a href='../index.html'>collection</a>::<wbr><a href='index.html'>tier</a>::<wbr><a class='struct' href=''>Merge</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-572' class='srclink' href='../../../src/differential_dataflow/collection/tier.rs.html#233-240' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Merge&lt;K, T, V&gt; {
+    // some fields omitted
+}</pre><div class='docblock'><p>A merge-in-progress of two instances of <code>Tier&lt;K, T, V&gt;</code>.</p>
+
+<p>A <code>Merge</code> represents a partial merge of two instances of <code>Tier&lt;K, T, V&gt;</code> into one instance,
+where times are advanced according to a function <code>advance</code> supplied to the <code>new</code> constructor,
+and like <code>(K, T, V, _)</code> tuples are consolidated into at most on result tuple.</p>
+
+<p>A <code>Merge</code> can execute progressively, allowing a large amount of work to be amortized over the
+large number of tuples involved. The <code>MergePart</code> structs contained in a <code>Merge</code> use <code>Rc&lt;Tier&gt;</code>
+fields to capture their tiers, as the <code>Merge</code> does not mutate the source <code>Tier</code> instances.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;K: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html' title='core::hash::Hash'>Hash</a>, V: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>&gt; <a class='struct' href='../../../differential_dataflow/collection/tier/struct.Merge.html' title='differential_dataflow::collection::tier::Merge'>Merge</a>&lt;K, T, V&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>&lt;F: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;T) -&gt; T&gt;(tier1: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html' title='alloc::rc::Rc'>Rc</a>&lt;<a class='struct' href='../../../differential_dataflow/collection/tier/struct.Tier.html' title='differential_dataflow::collection::tier::Tier'>Tier</a>&lt;K, T, V&gt;&gt;, tier2: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html' title='alloc::rc::Rc'>Rc</a>&lt;<a class='struct' href='../../../differential_dataflow/collection/tier/struct.Tier.html' title='differential_dataflow::collection::tier::Tier'>Tier</a>&lt;K, T, V&gt;&gt;, advance: &amp;F) -&gt; <a class='struct' href='../../../differential_dataflow/collection/tier/struct.Merge.html' title='differential_dataflow::collection::tier::Merge'>Merge</a>&lt;K, T, V&gt;</code></h4>
+<div class='docblock'><p>Constructs a new <code>Merge</code> from two instances of <code>Teir</code> and a function advancing timestamps.</p>
+
+<p>This method initiates a merge of two tiers, consolidating their representation which can
+potentially reduce the complexity and amount of memory required to describe a trace. The
+required inputs are two <code>Rc&lt;Tier&lt;K, T, V&gt;&gt;</code> instances to merge, and a function <code>advance</code>
+from <code>&amp;T</code> to <code>T</code> indicating how timestamps should be advanced.</p>
+
+<p>As part of initiating the merge, <code>new</code> will scan through the timestamps used by each source
+<code>Tier</code>, advancing each and creating a mapping from timestamp indices in each source to new
+advanced and unified timestamp indices.</p>
+</div><h4 id='method.step' class='method'><code>fn <a href='#method.step' class='fnname'>step</a>(&amp;mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../../differential_dataflow/collection/tier/struct.Tier.html' title='differential_dataflow::collection::tier::Tier'>Tier</a>&lt;K, T, V&gt;&gt;</code></h4>
+<div class='docblock'><p>Advances the <code>Merge</code> by one step, returning the merged tiers if it is now complete.</p>
+
+<p>The <code>step</code> method considers the next key proposed by <code>tier1</code> and <code>tier2</code>, and populates
+<code>self.result</code> as appropriate. If both <code>tier1</code> and <code>tier2</code> have the same key and the merged
+results cancel one-another, <code>self.result</code> may not actually change (although the merge has
+performed useful work).</p>
+
+<p>The <code>step</code> method returns <code>Some(result)</code> if the merge is now complete, and <code>None</code> if it is
+not yet complete, and should be called more.</p>
+
+<p>Once <code>step</code> returns a result, the <code>Merge</code> contains an empty <code>result</code> field. It is then a
+logic error to do anything other than discard the <code>Merge</code>, though the usage patterns don&#39;t
+currently enforce this.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "differential_dataflow";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

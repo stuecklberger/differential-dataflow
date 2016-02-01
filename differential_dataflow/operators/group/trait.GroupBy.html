@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GroupBy` trait in crate `differential_dataflow`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GroupBy">
+
+    <title>differential_dataflow::operators::group::GroupBy - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>differential_dataflow</a>::<wbr><a href='../index.html'>operators</a>::<wbr><a href='index.html'>group</a></p><script>window.sidebarCurrent = {name: 'GroupBy', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>differential_dataflow</a>::<wbr><a href='../index.html'>operators</a>::<wbr><a href='index.html'>group</a>::<wbr><a class='trait' href=''>GroupBy</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-1158' class='srclink' href='../../../src/differential_dataflow/operators/group.rs.html#122-168' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait GroupBy&lt;G: <a class='trait' href='../../../timely/dataflow/scopes/trait.Scope.html' title='timely::dataflow::scopes::Scope'>Scope</a>, D1: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>&gt;: <a class='trait' href='../../../differential_dataflow/operators/group/trait.GroupByCore.html' title='differential_dataflow::operators::group::GroupByCore'>GroupByCore</a>&lt;G, D1&gt; <span class='where'>where G::Timestamp: <a class='trait' href='../../../differential_dataflow/collection/least_upper_bound/trait.LeastUpperBound.html' title='differential_dataflow::collection::least_upper_bound::LeastUpperBound'>LeastUpperBound</a></span> {
+    fn <a href='#tymethod.group_by_u' class='fnname'>group_by_u</a>&lt;U: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a> + <a class='trait' href='../../../timely_sort/trait.Unsigned.html' title='timely_sort::Unsigned'>Unsigned</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, V1: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, V2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, D2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, KV: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(D1) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(U, V1)</a> + 'static, Logic: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;U, &amp;mut <a class='type' href='../../../differential_dataflow/collection/trace/type.CollectionIterator.html' title='differential_dataflow::collection::trace::CollectionIterator'>CollectionIterator</a>&lt;V1&gt;, &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(V2, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</a>&gt;) + 'static, Reduc: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;U, &amp;V2) -&gt; D2 + 'static&gt;(&amp;self, kv: KV, reduc: Reduc, logic: Logic) -&gt; <a class='struct' href='../../../differential_dataflow/struct.Collection.html' title='differential_dataflow::Collection'>Collection</a>&lt;G, D2&gt;;
+
+    fn <a href='#method.group_by' class='fnname'>group_by</a>&lt;K: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, V1: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, V2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, D2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, KV: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(D1) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(K, V1)</a> + 'static, Part: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;D1) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a> + 'static, U: <a class='trait' href='../../../timely_sort/trait.Unsigned.html' title='timely_sort::Unsigned'>Unsigned</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, KH: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;K) -&gt; U + 'static, Logic: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;K, &amp;mut <a class='type' href='../../../differential_dataflow/collection/trace/type.CollectionIterator.html' title='differential_dataflow::collection::trace::CollectionIterator'>CollectionIterator</a>&lt;V1&gt;, &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(V2, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</a>&gt;) + 'static, Reduc: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;K, &amp;V2) -&gt; D2 + 'static&gt;(&amp;self, kv: KV, part: Part, key_h: KH, reduc: Reduc, logic: Logic) -&gt; <a class='struct' href='../../../differential_dataflow/struct.Collection.html' title='differential_dataflow::Collection'>Collection</a>&lt;G, D2&gt; { ... }
+}</pre><div class='docblock'><p>Extension trait for the <code>group_by</code> and <code>group_by_u</code> differential dataflow methods.</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.group_by_u' class='method stab '><code>fn <a href='#tymethod.group_by_u' class='fnname'>group_by_u</a>&lt;U: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a> + <a class='trait' href='../../../timely_sort/trait.Unsigned.html' title='timely_sort::Unsigned'>Unsigned</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, V1: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, V2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, D2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, KV: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(D1) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(U, V1)</a> + 'static, Logic: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;U, &amp;mut <a class='type' href='../../../differential_dataflow/collection/trace/type.CollectionIterator.html' title='differential_dataflow::collection::trace::CollectionIterator'>CollectionIterator</a>&lt;V1&gt;, &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(V2, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</a>&gt;) + 'static, Reduc: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;U, &amp;V2) -&gt; D2 + 'static&gt;(&amp;self, kv: KV, reduc: Reduc, logic: Logic) -&gt; <a class='struct' href='../../../differential_dataflow/struct.Collection.html' title='differential_dataflow::Collection'>Collection</a>&lt;G, D2&gt;</code></h3><div class='docblock'><p>A specialization of the <code>group_by</code> method to the case that the key type <code>K</code> is an unsigned
+integer, and the strategy for indexing by key is simply to index into a vector.</p>
+</div></div>
+            <h2 id='provided-methods'>Provided Methods</h2>
+            <div class='methods'>
+        <h3 id='method.group_by' class='method stab '><code>fn <a href='#method.group_by' class='fnname'>group_by</a>&lt;K: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, V1: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, V2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, D2: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>, KV: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(D1) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(K, V1)</a> + 'static, Part: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;D1) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a> + 'static, U: <a class='trait' href='../../../timely_sort/trait.Unsigned.html' title='timely_sort::Unsigned'>Unsigned</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html' title='core::default::Default'>Default</a>, KH: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;K) -&gt; U + 'static, Logic: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;K, &amp;mut <a class='type' href='../../../differential_dataflow/collection/trace/type.CollectionIterator.html' title='differential_dataflow::collection::trace::CollectionIterator'>CollectionIterator</a>&lt;V1&gt;, &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(V2, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</a>&gt;) + 'static, Reduc: <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html' title='core::ops::Fn'>Fn</a>(&amp;K, &amp;V2) -&gt; D2 + 'static&gt;(&amp;self, kv: KV, part: Part, key_h: KH, reduc: Reduc, logic: Logic) -&gt; <a class='struct' href='../../../differential_dataflow/struct.Collection.html' title='differential_dataflow::Collection'>Collection</a>&lt;G, D2&gt;</code></h3><div class='docblock'><p>Groups input records together by key and applies a reduction function.</p>
+
+<p><code>group_by</code> transforms a stream of records of type <code>D1</code> into a stream of records of type <code>D2</code>,
+by first transforming each input record into a <code>(key, val): (K, V1)</code> pair. For each key with
+some values, <code>logic</code> is invoked on the key and an value enumerator which presents <code>(V1, i32)</code>
+pairs, indicating for each value its multiplicity. <code>logic</code> is expected to populate its third
+argument, a <code>&amp;mut Vec&lt;(V2, i32)&gt;</code> indicating multiplicities of output records. Finally, for
+each <code>(key,val) : (K,V2)</code> pair produced, <code>reduc</code> is applied to produce an output <code>D2</code> record.</p>
+
+<p>This all may seem overcomplicated, and it may indeed become simpler in the future. For the
+moment it is designed to allow as much programmability as possible.</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;G: <a class='trait' href='../../../timely/dataflow/scopes/trait.Scope.html' title='timely::dataflow::scopes::Scope'>Scope</a>, D1: <a class='trait' href='../../../differential_dataflow/trait.Data.html' title='differential_dataflow::Data'>Data</a>&gt; <a class='trait' href='../../../differential_dataflow/operators/group/trait.GroupBy.html' title='differential_dataflow::operators::group::GroupBy'>GroupBy</a>&lt;G, D1&gt; for <a class='struct' href='../../../differential_dataflow/struct.Collection.html' title='differential_dataflow::Collection'>Collection</a>&lt;G, D1&gt; <span class='where'>where G::Timestamp: <a class='trait' href='../../../differential_dataflow/collection/least_upper_bound/trait.LeastUpperBound.html' title='differential_dataflow::collection::least_upper_bound::LeastUpperBound'>LeastUpperBound</a></span></code></li>
+</ul><script type="text/javascript" async
+                              src="../../../implementors/differential_dataflow/operators/group/trait.GroupBy.js">
+                      </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "differential_dataflow";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

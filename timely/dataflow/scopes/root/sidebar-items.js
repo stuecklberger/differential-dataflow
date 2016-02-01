@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Root","A `Root` is the entry point to a timely dataflow computation. It wraps a `Allocate`, and has a slot for one child `Operate`. The primary intended use of `Root` is through its implementation of the `Scope` trait."]]});

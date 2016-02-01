@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Trace` struct in crate `differential_dataflow`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Trace">
+
+    <title>differential_dataflow::collection::trace::Trace - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>differential_dataflow</a>::<wbr><a href='../index.html'>collection</a>::<wbr><a href='index.html'>trace</a></p><script>window.sidebarCurrent = {name: 'Trace', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>differential_dataflow</a>::<wbr><a href='../index.html'>collection</a>::<wbr><a href='index.html'>trace</a>::<wbr><a class='struct' href=''>Trace</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-225' class='srclink' href='../../../src/differential_dataflow/collection/trace.rs.html#65-71' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Trace&lt;K, T, V, L&gt; {
+    pub keys: L,
+    // some fields omitted
+}</pre><div class='docblock'><p>A collection of values indexed by <code>key</code> and <code>time</code>.</p>
+
+<h1 id='safety' class='section-header'><a href='#safety'>Safety</a></h1>
+<p>For reasons of borrow checking, it is difficult to merge references using already-allocated
+memory. The method <code>get_collection_using</code> uses its <code>heap</code> argument to store references that should
+remain valid for as long as the <code>Trace</code> is valid, but I cannot convince Rust of this fact because
+only I know that once installed, differences are immutable. Please do not call <code>get_collection_using</code>
+with a <code>heap</code> argument that may out-live the <code>Trace</code> itself.</p>
+</div><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.keys'><code>keys</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;K, V, L, T&gt; <a class='struct' href='../../../differential_dataflow/collection/trace/struct.Trace.html' title='differential_dataflow::collection::trace::Trace'>Trace</a>&lt;K, T, V, L&gt; <span class='where'>where K: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a>, V: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html' title='core::cmp::Ord'>Ord</a>, L: <a class='trait' href='../../../differential_dataflow/collection/lookup/trait.Lookup.html' title='differential_dataflow::collection::lookup::Lookup'>Lookup</a>&lt;K, <a class='struct' href='../../../differential_dataflow/collection/trace/struct.Offset.html' title='differential_dataflow::collection::trace::Offset'>Offset</a>&gt;, T: <a class='trait' href='../../../differential_dataflow/collection/least_upper_bound/trait.LeastUpperBound.html' title='differential_dataflow::collection::least_upper_bound::LeastUpperBound'>LeastUpperBound</a> + <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a></span></code></h3><div class='impl-items'><h4 id='method.set_difference' class='method'><code>fn <a href='#method.set_difference' class='fnname'>set_difference</a>(&amp;mut self, time: T, accumulation: <a class='struct' href='../../../differential_dataflow/collection/compact/struct.Compact.html' title='differential_dataflow::collection::compact::Compact'>Compact</a>&lt;K, V&gt;)</code></h4>
+<div class='docblock'><p>Installs a supplied set of keys and values as the differences for <code>time</code>.</p>
+</div><h4 id='method.get_difference' class='method'><code>fn <a href='#method.get_difference' class='fnname'>get_difference</a>&lt;'a&gt;(&amp;'a self, key: &amp;K, time: &amp;T) -&gt; <a class='struct' href='../../../differential_dataflow/collection/trace/struct.DifferenceIterator.html' title='differential_dataflow::collection::trace::DifferenceIterator'>DifferenceIterator</a>&lt;'a, V&gt;</code></h4>
+<div class='docblock'><p>Enumerates the differences for <code>key</code> at <code>time</code>.</p>
+</div><h4 id='method.get_collection_using' class='method'><code>unsafe fn <a href='#method.get_collection_using' class='fnname'>get_collection_using</a>&lt;'a&gt;(&amp;'a self, key: &amp;K, time: &amp;T, heap: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(&amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>)</a>, <a class='struct' href='../../../differential_dataflow/collection/trace/struct.DifferenceIterator.html' title='differential_dataflow::collection::trace::DifferenceIterator'>DifferenceIterator</a>&lt;'static, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;)</a>&gt;) -&gt; <a class='type' href='../../../differential_dataflow/collection/trace/type.CollectionIterator.html' title='differential_dataflow::collection::trace::CollectionIterator'>CollectionIterator</a>&lt;'a, V&gt;</code></h4>
+<div class='docblock'><p>Enumerates the collection for <code>key</code> at <code>time</code>.</p>
+
+<p>A collection is defined as the accumulation of all differences at times less or equal to
+<code>time</code>.</p>
+</div><h4 id='method.interesting_times' class='method'><code>fn <a href='#method.interesting_times' class='fnname'>interesting_times</a>&lt;'a&gt;(&amp;'a mut self, key: &amp;K, index: T) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a [</a>T<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+<div class='docblock'><p>Lists times that are the least upper bound of <code>time</code> and any subset of existing times.</p>
+</div><h4 id='method.trace' class='method'><code>fn <a href='#method.trace' class='fnname'>trace</a>&lt;'a&gt;(&amp;'a self, key: &amp;K) -&gt; <a class='struct' href='../../../differential_dataflow/collection/trace/struct.TraceIterator.html' title='differential_dataflow::collection::trace::TraceIterator'>TraceIterator</a>&lt;'a, K, T, V, L&gt;</code></h4>
+<div class='docblock'><p>Enumerates pairs of time <code>&amp;T</code> and differences <code>DifferenceIterator&lt;V&gt;</code> for <code>key</code>.</p>
+</div></div><h3 class='impl'><code>impl&lt;K: <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>, L: <a class='trait' href='../../../differential_dataflow/collection/lookup/trait.Lookup.html' title='differential_dataflow::collection::lookup::Lookup'>Lookup</a>&lt;K, <a class='struct' href='../../../differential_dataflow/collection/trace/struct.Offset.html' title='differential_dataflow::collection::trace::Offset'>Offset</a>&gt;, T, V&gt; <a class='struct' href='../../../differential_dataflow/collection/trace/struct.Trace.html' title='differential_dataflow::collection::trace::Trace'>Trace</a>&lt;K, T, V, L&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(l: L) -&gt; <a class='struct' href='../../../differential_dataflow/collection/trace/struct.Trace.html' title='differential_dataflow::collection::trace::Trace'>Trace</a>&lt;K, T, V, L&gt;</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "differential_dataflow";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

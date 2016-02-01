@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Subgraph` struct in crate `timely`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Subgraph">
+
+    <title>timely::progress::nested::subgraph::Subgraph - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../../index.html'>timely</a>::<wbr><a href='../../index.html'>progress</a>::<wbr><a href='../index.html'>nested</a>::<wbr><a href='index.html'>subgraph</a></p><script>window.sidebarCurrent = {name: 'Subgraph', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../../index.html'>timely</a>::<wbr><a href='../../index.html'>progress</a>::<wbr><a href='../index.html'>nested</a>::<wbr><a href='index.html'>subgraph</a>::<wbr><a class='struct' href=''>Subgraph</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-630' class='srclink' href='../../../../src/timely/progress/nested/subgraph.rs.html#31-64' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Subgraph&lt;TOuter: <a class='trait' href='../../../../timely/progress/timestamp/trait.Timestamp.html' title='timely::progress::timestamp::Timestamp'>Timestamp</a>, TInner: <a class='trait' href='../../../../timely/progress/timestamp/trait.Timestamp.html' title='timely::progress::timestamp::Timestamp'>Timestamp</a>&gt; {
+    pub path: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;,
+    pub index: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>,
+    // some fields omitted
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.path'><code>path</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.index'><code>index</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;TOuter: <a class='trait' href='../../../../timely/progress/timestamp/trait.Timestamp.html' title='timely::progress::timestamp::Timestamp'>Timestamp</a>, TInner: <a class='trait' href='../../../../timely/progress/timestamp/trait.Timestamp.html' title='timely::progress::timestamp::Timestamp'>Timestamp</a>&gt; <a class='struct' href='../../../../timely/progress/nested/subgraph/struct.Subgraph.html' title='timely::progress::nested::subgraph::Subgraph'>Subgraph</a>&lt;TOuter, TInner&gt;</code></h3><div class='impl-items'><h4 id='method.new_input' class='method'><code>fn <a href='#method.new_input' class='fnname'>new_input</a>(&amp;mut self, shared_counts: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html' title='alloc::rc::Rc'>Rc</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/core/cell/struct.RefCell.html' title='core::cell::RefCell'>RefCell</a>&lt;<a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;<a class='struct' href='../../../../timely/progress/nested/product/struct.Product.html' title='timely::progress::nested::product::Product'>Product</a>&lt;TOuter, TInner&gt;&gt;&gt;&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<h4 id='method.new_output' class='method'><code>fn <a href='#method.new_output' class='fnname'>new_output</a>(&amp;mut self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<h4 id='method.connect' class='method'><code>fn <a href='#method.connect' class='fnname'>connect</a>(&amp;mut self, source: <a class='struct' href='../../../../timely/progress/nested/subgraph/struct.Source.html' title='timely::progress::nested::subgraph::Source'>Source</a>, target: <a class='struct' href='../../../../timely/progress/nested/subgraph/struct.Target.html' title='timely::progress::nested::subgraph::Target'>Target</a>)</code></h4>
+<h4 id='method.new_from' class='method'><code>fn <a href='#method.new_from' class='fnname'>new_from</a>&lt;A: <a class='trait' href='../../../../timely_communication/allocator/trait.Allocate.html' title='timely_communication::allocator::Allocate'>Allocate</a>&gt;(allocator: &amp;mut A, index: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, path: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;) -&gt; <a class='struct' href='../../../../timely/progress/nested/subgraph/struct.Subgraph.html' title='timely::progress::nested::subgraph::Subgraph'>Subgraph</a>&lt;TOuter, TInner&gt;</code></h4>
+<h4 id='method.allocate_child_id' class='method'><code>fn <a href='#method.allocate_child_id' class='fnname'>allocate_child_id</a>(&amp;mut self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<h4 id='method.add_child' class='method'><code>fn <a href='#method.add_child' class='fnname'>add_child</a>(&amp;mut self, child: <a class='struct' href='https://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='trait' href='../../../../timely/progress/operate/trait.Operate.html' title='timely::progress::operate::Operate'>Operate</a>&lt;<a class='struct' href='../../../../timely/progress/nested/product/struct.Product.html' title='timely::progress::nested::product::Product'>Product</a>&lt;TOuter, TInner&gt;&gt;&gt;, index: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>, identifier: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;TOuter: <a class='trait' href='../../../../timely/progress/timestamp/trait.Timestamp.html' title='timely::progress::timestamp::Timestamp'>Timestamp</a>, TInner: <a class='trait' href='../../../../timely/progress/timestamp/trait.Timestamp.html' title='timely::progress::timestamp::Timestamp'>Timestamp</a>&gt; <a class='trait' href='../../../../timely/progress/operate/trait.Operate.html' title='timely::progress::operate::Operate'>Operate</a>&lt;TOuter&gt; for <a class='struct' href='../../../../timely/progress/nested/subgraph/struct.Subgraph.html' title='timely::progress::nested::subgraph::Subgraph'>Subgraph</a>&lt;TOuter, TInner&gt;</code></h3><div class='impl-items'><h4 id='method.name' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.name' class='fnname'>name</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<h4 id='method.local' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.local' class='fnname'>local</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.inputs' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.inputs' class='fnname'>inputs</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<h4 id='method.outputs' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.outputs' class='fnname'>outputs</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+<h4 id='method.get_internal_summary' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.get_internal_summary' class='fnname'>get_internal_summary</a>(&amp;mut self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../../../timely/progress/frontier/struct.Antichain.html' title='timely::progress::frontier::Antichain'>Antichain</a>&lt;TOuter::Summary&gt;&gt;&gt;, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;TOuter&gt;&gt;)</a></code></h4>
+<h4 id='method.set_external_summary' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.set_external_summary' class='fnname'>set_external_summary</a>(&amp;mut self, summaries: <a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='struct' href='../../../../timely/progress/frontier/struct.Antichain.html' title='timely::progress::frontier::Antichain'>Antichain</a>&lt;TOuter::Summary&gt;&gt;&gt;, frontier: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;TOuter&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>)</code></h4>
+<h4 id='method.push_external_progress' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.push_external_progress' class='fnname'>push_external_progress</a>(&amp;mut self, external: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;TOuter&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>)</code></h4>
+<h4 id='method.pull_internal_progress' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.pull_internal_progress' class='fnname'>pull_internal_progress</a>(&amp;mut self, consumed: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;TOuter&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, internal: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;TOuter&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, produced: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a class='struct' href='../../../../timely/progress/count_map/struct.CountMap.html' title='timely::progress::count_map::CountMap'>CountMap</a>&lt;TOuter&gt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.notify_me' class='method'><code>fn <a href='../../../../timely/progress/operate/trait.Operate.html#method.notify_me' class='fnname'>notify_me</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "timely";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>
